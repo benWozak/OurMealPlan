@@ -525,7 +525,8 @@ const MealPlanner = () => {
 
   const selectedWeek = sampleData[selectedWeekIndex];
 
-  const handleDragEnd = (e: any, { offset }: any) => {
+  // TODO: replace this with better system for handling drag/swipe
+  const handleDragEnd = (_: any, { offset }: any) => {
     const swipe = offset.x;
 
     if (swipe < -50 && currentDayIndex < selectedWeek.days.length - 1) {
