@@ -36,7 +36,7 @@ const NavBar = () => {
     {
       name: "Meal Plan",
       icon: <Calendar className="h-6 w-6" />,
-      href: "/meal-plan",
+      href: "/",
       panel: null,
     },
     {

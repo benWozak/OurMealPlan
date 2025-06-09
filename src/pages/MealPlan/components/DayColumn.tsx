@@ -17,7 +17,7 @@ const DayColumn = ({ day }: DayColumnProps) => {
 
   return (
     <div className="flex-shrink-0 w-full h-full px-3 py-2 overflow-y-auto">
-      <div className="mb-3 text-center">
+      <div className="mb-3 text-center max-w-xs mx-auto">
         <h2 className="text-lg font-semibold text-gray-900">{day.name}</h2>
         <p className="text-xs text-gray-500">
           {new Date(day.date).toLocaleDateString()}
