@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import ReactSwipe from "react-swipe";
 import WeekSelector from "./WeekSelector";
 import DayColumn from "./DayColumn";
+import WeekColumn from "./WeekColumn";
 
 // Sample data
 import sampleData from "../sampleData";
@@ -9,6 +10,7 @@ import sampleData from "../sampleData";
 const MealPlanner = () => {
   const [selectedWeekIndex, setSelectedWeekIndex] = useState(0);
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
+  const [viewMode, setViewMode] = useState<'day' | 'week'>('day');
   const reactSwipeEl = useRef<ReactSwipe | null>(null);
 
   const selectedWeek = sampleData[selectedWeekIndex];
@@ -59,41 +61,55 @@ const MealPlanner = () => {
         selectedWeekIndex={selectedWeekIndex}
         onSelectWeek={handleWeekChange}
       />
-      <div className="relative flex-1 overflow-hidden">
-        {/* --- Day Navigation Controls --- */}
-        <div className="absolute top-0 left-0 right-0 flex justify-between z-1 bg-transparent items-center space-x-4 py-4">
-          {/* Previous Button */}
-          <button
-            onClick={handlePrev}
-            disabled={currentDayIndex === 0}
-            className="text-2xl text-primary disabled:text-gray-300 disabled:cursor-not-allowed p-2"
-            aria-label="Previous day"
-          >
-            ‹
-          </button>
-
-          {/* Next Button */}
-          <button
-            onClick={handleNext}
-            disabled={currentDayIndex === selectedWeek.days.length - 1}
-            className="text-2xl text-primary disabled:text-gray-300 disabled:cursor-not-allowed p-2"
-            aria-label="Next day"
-          >
-            ›
-          </button>
-        </div>
-        <ReactSwipe
-          ref={reactSwipeEl}
-          className="h-full"
-          swipeOptions={swipeOptions}
-          key={`week-${selectedWeek.id}-${selectedWeekIndex}`} // More specific key
+      <div className="flex justify-end p-2">
+        <button
+          onClick={() => setViewMode(viewMode === 'day' ? 'week' : 'day')}
+          className="text-sm text-primary px-2 py-1 border rounded"
         >
-          {selectedWeek.days.map((day) => (
-            <div key={day.id} className="h-full">
-              <DayColumn day={day} />
+          {viewMode === 'day' ? 'Week View' : 'Day View'}
+        </button>
+      </div>
+      <div className="relative flex-1 overflow-hidden">
+        {viewMode === 'day' ? (
+          <>
+            {/* --- Day Navigation Controls --- */}
+            <div className="absolute top-0 left-0 right-0 flex justify-between z-1 bg-transparent items-center space-x-4 py-4">
+              {/* Previous Button */}
+              <button
+                onClick={handlePrev}
+                disabled={currentDayIndex === 0}
+                className="text-2xl text-primary disabled:text-gray-300 disabled:cursor-not-allowed p-2"
+                aria-label="Previous day"
+              >
+                ‹
+              </button>
+
+              {/* Next Button */}
+              <button
+                onClick={handleNext}
+                disabled={currentDayIndex === selectedWeek.days.length - 1}
+                className="text-2xl text-primary disabled:text-gray-300 disabled:cursor-not-allowed p-2"
+                aria-label="Next day"
+              >
+                ›
+              </button>
             </div>
-          ))}
-        </ReactSwipe>
+            <ReactSwipe
+              ref={reactSwipeEl}
+              className="h-full"
+              swipeOptions={swipeOptions}
+              key={`week-${selectedWeek.id}-${selectedWeekIndex}`}
+            >
+              {selectedWeek.days.map((day) => (
+                <div key={day.id} className="h-full">
+                  <DayColumn day={day} />
+                </div>
+              ))}
+            </ReactSwipe>
+          </>
+        ) : (
+          <WeekColumn week={selectedWeek} />
+        )}
       </div>
     </div>
   );
