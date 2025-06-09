@@ -119,7 +119,7 @@
   }
 }
 
-/* html, body {
+html, body {
   overscroll-behavior: none;
   touch-action: pan-x pan-y;
   user-select: none;
@@ -129,4 +129,4 @@
 
 input, textarea, select {
   font-size: 1rem;
-} */
+}
