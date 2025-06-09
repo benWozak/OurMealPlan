@@ -118,3 +118,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+html, body {
+  overscroll-behavior: none;
+  touch-action: pan-x pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none; /* Disable long press context menu on iOS */
+}
+
+input, textarea, select {
+  font-size: 1rem;
+}

@@ -5,8 +5,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router";
 import MealPlan from "./pages/MealPlan";
 import Recipes from "./pages/Recipes";
 import Profile from "./pages/Profile";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const handler = (e: MouseEvent) => e.preventDefault();
+    document.addEventListener("contextmenu", handler);
+    return () => document.removeEventListener("contextmenu", handler);
+  }, []);
   return (
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       <Router>

@@ -26,7 +26,7 @@ const DayColumn = ({ day }: DayColumnProps) => {
 
       <div className="space-y-3">
         <div>
-          <h3 className="text-xs font-medium text-gray-500 mb-1 uppercase tracking-wide">
+          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide">
             Breakfast
           </h3>
           {mealsByType.breakfast.map((meal) => (
@@ -35,7 +35,7 @@ const DayColumn = ({ day }: DayColumnProps) => {
         </div>
 
         <div>
-          <h3 className="text-xs font-medium text-gray-500 mb-1 uppercase tracking-wide">
+          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide">
             Morning Snack
           </h3>
           {mealsByType.snack1.map((meal) => (
@@ -44,7 +44,7 @@ const DayColumn = ({ day }: DayColumnProps) => {
         </div>
 
         <div>
-          <h3 className="text-xs font-medium text-gray-500 mb-1 uppercase tracking-wide">
+          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide">
             Lunch
           </h3>
           {mealsByType.lunch.map((meal) => (
@@ -53,7 +53,7 @@ const DayColumn = ({ day }: DayColumnProps) => {
         </div>
 
         <div>
-          <h3 className="text-xs font-medium text-gray-500 mb-1 uppercase tracking-wide">
+          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide">
             Afternoon Snack
           </h3>
           {mealsByType.snack2.map((meal) => (
@@ -62,7 +62,7 @@ const DayColumn = ({ day }: DayColumnProps) => {
         </div>
 
         <div>
-          <h3 className="text-xs font-medium text-gray-500 mb-1 uppercase tracking-wide">
+          <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide">
             Dinner
           </h3>
           {mealsByType.dinner.map((meal) => (

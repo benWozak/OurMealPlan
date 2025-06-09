@@ -15,7 +15,7 @@ const MealCard = ({ meal }: MealCardProps) => {
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
     >
-      <div className="flex-1 px-3 flex flex-col justify-between min-h-24 p-2">
+      <div className="flex-1 px-3 flex flex-col justify-between min-h-20 p-2">
         <h4 className="font-medium text-gray-900 leading-tight">{meal.name}</h4>
 
         <div className="flex items-center gap-2">
@@ -30,7 +30,7 @@ const MealCard = ({ meal }: MealCardProps) => {
       </div>
 
       {imageUrl && (
-        <div className="w-32 h-24 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
+        <div className="w-32 h-20 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
           <img
             src={imageUrl}
             alt={meal.name}
